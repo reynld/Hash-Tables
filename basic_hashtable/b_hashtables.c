@@ -99,6 +99,16 @@ void hash_table_insert(BasicHashTable *ht, char *key, char *value)
  ****/
 void hash_table_remove(BasicHashTable *ht, char *key)
 {
+  int hk = hash(key, ht->capacity);
+
+  Pair *pr = ht->storage[hk];
+
+  ht->storage[hk] = NULL;
+  // free(pr->value);
+  // free(pr->key);
+  // free(pr);
+
+  destroy_pair(pr);
 
 }
 
